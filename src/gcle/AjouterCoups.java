@@ -5,7 +5,6 @@ import gcle.position.GCoups;
 import gcle.position.GPosition;
 
 public class AjouterCoups extends Contexte {
-
     public AjouterCoups(GPosition gposition, int couleur) {
         super(gposition, couleur);
     }
@@ -51,10 +50,17 @@ public class AjouterCoups extends Contexte {
             return c;
         }
     }
-      static class AjouterCoupsARetirer extends Fonction {
+    static class AjouterCoupsARetirer extends Fonction {
         @Override
         public Contexte exec(Contexte c) {
             c.coupsARetirerCarEchec.add(c.coupsAControlerPourEchec);
+            return c;
+        }
+    }
+    static class RetirerCoupsMiseEnEchec extends Fonction {
+        @Override
+        public Contexte exec(Contexte c) {
+            c.fCoups.removeAll(fInitFiltreEchec.exec(c).coupsARetirerCarEchec);
             return c;
         }
     }

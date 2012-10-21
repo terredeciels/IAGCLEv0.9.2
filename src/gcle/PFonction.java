@@ -24,7 +24,6 @@ public class PFonction extends FonctionUtile implements ICodage {
             return c;
         }
     }
-    
     static class PieceAJouer extends Fonction {
         @Override
         public Contexte exec(Contexte c) {
@@ -252,7 +251,6 @@ public class PFonction extends FonctionUtile implements ICodage {
             return c;
         }
     }
-  
     static class CaseDuRoi extends Fonction {
         @Override
         public Contexte exec(Contexte c) {
@@ -286,6 +284,7 @@ public class PFonction extends FonctionUtile implements ICodage {
     static class FiltreEchec extends Fonction {
         @Override
         public Contexte exec(Contexte c) {
+
             fIterateurFiltreEchecs.exec(c);
             Contexte c1 = fSimulePosition.exec(c);
             c.pseudoCoupsPositionSimule = fCaseAJouer.exec(new Contexte(c1.gpositionSimul, c1.gpositionSimul.getTrait())).pseudoCoups;
@@ -293,6 +292,7 @@ public class PFonction extends FonctionUtile implements ICodage {
             c.fonction = fCaseDuRoi;
             c.caseRoi = fFind(c).entier;
             FSi.getInstance(fog(fExist, fInitEstEnEchec), fAjouterCoupsARetirer).exec(c);
+
             return c;
         }
     }
@@ -309,15 +309,7 @@ public class PFonction extends FonctionUtile implements ICodage {
         @Override
         public Contexte exec(Contexte c) {
             c.coupsARetirerCarEchec = new ArrayList();
-            fCreerIterateurFiltreEchec.exec(c);
-            FTantQue.getInstance(fExisteCoupsARetirerSuivant, fFiltreEchec).exec(c);
-            return c;
-        }
-    }
-    static class RetirerCoupsMiseEnEchec extends Fonction {
-        @Override
-        public Contexte exec(Contexte c) {
-            c.fCoups.removeAll(fInitFiltreEchec.exec(c).coupsARetirerCarEchec);
+            fog(FTantQue.getInstance(fExisteCoupsARetirerSuivant, fFiltreEchec), fCreerIterateurFiltreEchec).exec(c);
             return c;
         }
     }
