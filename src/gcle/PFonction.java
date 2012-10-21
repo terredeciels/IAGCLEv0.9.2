@@ -24,11 +24,12 @@ public class PFonction extends FonctionUtile implements ICodage {
             return c;
         }
     }
+    
     static class PieceAJouer extends Fonction {
         @Override
         public Contexte exec(Contexte c) {
-            c.caseO = c.i;
-            c.b = c.etats[c.caseO] * c.couleur > 0;
+            c.caseO = c.entier;
+            c.booleen = c.etats[c.caseO] * c.couleur > 0;
             return c;
         }
     }
@@ -45,7 +46,7 @@ public class PFonction extends FonctionUtile implements ICodage {
     static class EstUnPion extends Fonction {
         @Override
         public Contexte exec(Contexte c) {
-            c.b = c.typePiece == PION;
+            c.booleen = c.typePiece == PION;
             return c;
         }
     }
@@ -93,7 +94,7 @@ public class PFonction extends FonctionUtile implements ICodage {
     static class PremiereCaseX extends Fonction {
         @Override
         public Contexte exec(Contexte c) {
-            c.direction = c.i;
+            c.direction = c.entier;
             c.caseX = c.caseO + c.direction;
             return c;
         }
@@ -101,7 +102,7 @@ public class PFonction extends FonctionUtile implements ICodage {
     static class EstPieceGlissante extends Fonction {
         @Override
         public Contexte exec(Contexte c) {
-            c.b = TGLISSANT[c.typePiece];
+            c.booleen = TGLISSANT[c.typePiece];
             return c;
         }
     }
@@ -109,7 +110,7 @@ public class PFonction extends FonctionUtile implements ICodage {
         @Override
         public Contexte exec(Contexte c) {
             c.collection = Arrays.asList(LDIRECTIONS.get(c.typePiece));
-            c.fonction = fEstPieceGlissante.exec(c).b ? fPieceGlissante : fPieceNonGlissante;
+            c.fonction = fEstPieceGlissante.exec(c).booleen ? fPieceGlissante : fPieceNonGlissante;
             return c;
         }
     }
@@ -133,7 +134,7 @@ public class PFonction extends FonctionUtile implements ICodage {
     static class ExisteCaseEP extends Fonction {
         @Override
         public Contexte exec(Contexte c) {
-            c.b = c.gposition.getCaseEP() != PAS_DE_CASE;
+            c.booleen = c.gposition.getCaseEP() != PAS_DE_CASE;
             return c;
         }
     }
@@ -149,7 +150,7 @@ public class PFonction extends FonctionUtile implements ICodage {
     static class CasesAttaqueRoque extends Fonction {
         @Override
         public Contexte exec(Contexte c) {
-            c.b = c.caseAttaquante == c.E1ouE8
+            c.booleen = c.caseAttaquante == c.E1ouE8
                     || c.caseAttaquante == c.F1ouF8
                     || c.caseAttaquante == c.G1ouG8;
             return c;
@@ -166,7 +167,7 @@ public class PFonction extends FonctionUtile implements ICodage {
     static class RoquesEtat extends Fonction {
         @Override
         public Contexte exec(Contexte c) {
-            c.b = fRoqueContexte
+            c.booleen = fRoqueContexte
                     .exec(c).gposition
                     .getDroitRoques()[BCOULEUR.get(c.couleur)][c.aile + c.constante];
             return c;
@@ -183,21 +184,21 @@ public class PFonction extends FonctionUtile implements ICodage {
             c.F1ouF8 = CASESROQUE[c.aile][1];
             c.G1ouG8 = CASESROQUE[c.aile][2];
             c.estAttaqueDuRoi = false;
-            c.b = possible &= !(fAttaqueRoque.exec(c).estAttaqueDuRoi);
+            c.booleen = possible &= !(fAttaqueRoque.exec(c).estAttaqueDuRoi);
             return c;
         }
     }
     static class PieceOpposante extends Fonction {
         @Override
         public Contexte exec(Contexte c) {
-            c.b = fExisteCase.exec(c).b && c.etats[c.caseX] * c.couleur < 0;
+            c.booleen = fExisteCase.exec(c).booleen && c.etats[c.caseX] * c.couleur < 0;
             return c;
         }
     }
     static class Vide extends Fonction {
         @Override
         public Contexte exec(Contexte c) {
-            c.b = c.etats[c.caseX] == VIDE;
+            c.booleen = c.etats[c.caseX] == VIDE;
             return c;
         }
     }
@@ -211,7 +212,7 @@ public class PFonction extends FonctionUtile implements ICodage {
     static class ExisteCase extends Fonction {
         @Override
         public Contexte exec(Contexte c) {
-            c.b = c.etats[c.caseX] != OUT;
+            c.booleen = c.etats[c.caseX] != OUT;
             return c;
 
         }
@@ -220,11 +221,11 @@ public class PFonction extends FonctionUtile implements ICodage {
         @Override
         public Contexte exec(Contexte c) {
             if (c.caseX >= a1 && c.caseX <= h1 && c.couleur == NOIR) {
-                c.b = true;
+                c.booleen = true;
             } else if (c.caseX >= a8 && c.caseX <= h8 && c.couleur == BLANC) {
-                c.b = true;
+                c.booleen = true;
             } else {
-                c.b = false;
+                c.booleen = false;
             }
             return c;
         }
@@ -233,11 +234,11 @@ public class PFonction extends FonctionUtile implements ICodage {
         @Override
         public Contexte exec(Contexte c) {
             if ((c.caseO >= a7) && (c.caseO <= h7) && (c.couleur == NOIR)) {
-                c.b = true;
+                c.booleen = true;
             } else if ((c.caseO >= a2) && (c.caseO <= h2) && (c.couleur == BLANC)) {
-                c.b = true;
+                c.booleen = true;
             } else {
-                c.b = false;
+                c.booleen = false;
             }
             return c;
         }
@@ -246,7 +247,7 @@ public class PFonction extends FonctionUtile implements ICodage {
         @Override
         public Contexte exec(Contexte c) {
             fTypePiece.exec(c);
-            c.b = c.typePiece == PION && (c.etats[c.caseO] < 0 ? BLANC : NOIR) == c.couleur;
+            c.booleen = c.typePiece == PION && (c.etats[c.caseO] < 0 ? BLANC : NOIR) == c.couleur;
             return c;
         }
     }
@@ -260,8 +261,8 @@ public class PFonction extends FonctionUtile implements ICodage {
     static class CaseDuRoi extends Fonction {
         @Override
         public Contexte exec(Contexte c) {
-            c.caseO = c.i;
-            c.b = Math.abs(c.etatsSimul[c.caseO]) == ROI && c.etatsSimul[c.caseO] * c.couleur > 0;
+            c.caseO = c.entier;
+            c.booleen = Math.abs(c.etatsSimul[c.caseO]) == ROI && c.etatsSimul[c.caseO] * c.couleur > 0;
             return c;
         }
     }
@@ -295,7 +296,7 @@ public class PFonction extends FonctionUtile implements ICodage {
             c.pseudoCoupsPositionSimule = fCaseAJouer.exec(new Contexte(c1.gpositionSimul, c1.gpositionSimul.getTrait())).pseudoCoups;
             c.collection = ECHIQUIER;
             c.fonction = fCaseDuRoi;
-            c.caseRoi = fFind(c).i;
+            c.caseRoi = fFind(c).entier;
             FSi.getInstance(fog(fExist, fInitEstEnEchec), fAjouterCoupsARetirer).exec(c);
             return c;
         }
@@ -342,21 +343,21 @@ public class PFonction extends FonctionUtile implements ICodage {
     static class TypeDeplOuPrise extends Fonction {
         @Override
         public Contexte exec(Contexte c) {
-            c.b = c.typeCoups == TypeCoups.Deplacement || c.typeCoups == TypeCoups.Prise;
+            c.booleen = c.typeCoups == TypeCoups.Deplacement || c.typeCoups == TypeCoups.Prise;
             return c;
         }
     }
     static class TypeEnPassant extends Fonction {
         @Override
         public Contexte exec(Contexte c) {
-            c.b = c.typeCoups == TypeCoups.EnPassant;
+            c.booleen = c.typeCoups == TypeCoups.EnPassant;
             return c;
         }
     }
     static class TypePromotion extends Fonction {
         @Override
         public Contexte exec(Contexte c) {
-            c.b = c.typeCoups == TypeCoups.Promotion;
+            c.booleen = c.typeCoups == TypeCoups.Promotion;
             return c;
         }
     }

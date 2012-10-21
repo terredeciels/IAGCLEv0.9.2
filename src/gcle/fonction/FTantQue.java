@@ -23,7 +23,7 @@ public class FTantQue extends  Fonction {
     @Override
     public Contexte exec(Contexte c) {
 
-        while (iPredicat.exec(c).b) {
+        while (iPredicat.exec(c).booleen) {
             iFermeture.exec(c);
         }
         return c;

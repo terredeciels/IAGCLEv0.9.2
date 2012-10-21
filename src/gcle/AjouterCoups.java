@@ -5,9 +5,7 @@ import gcle.position.GCoups;
 import gcle.position.GPosition;
 
 public class AjouterCoups extends Contexte {
-    public AjouterCoups(GPosition gposition) {
-        super(gposition);
-    }
+
     public AjouterCoups(GPosition gposition, int couleur) {
         super(gposition, couleur);
     }

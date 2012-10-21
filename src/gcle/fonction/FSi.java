@@ -28,7 +28,7 @@ public class FSi extends  Fonction {
     @Override
     public Contexte exec(Contexte c) {
 
-        if (iPFonction.exec(c).b == true) {
+        if (iPFonction.exec(c).booleen == true) {
             iFVrai.exec(c);
         } else {
             iFfaux.exec(c);

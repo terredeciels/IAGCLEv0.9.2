@@ -35,8 +35,8 @@ public class FUtiles {
         Fonction f = c.fonction;
         if (e != null && f != null) {
             for (Iterator iter = e.iterator(); iter.hasNext();) {
-                c.i = (Integer) iter.next();
-                if (f.exec(c).b) {
+                c.entier = (Integer) iter.next();
+                if (f.exec(c).booleen) {
                     return c;
                 }
             }
@@ -50,7 +50,7 @@ public class FUtiles {
             Fonction f = c.fonction;
             if (e != null && f != null) {
                 for (Iterator it = e.iterator(); it.hasNext();) {
-                    c.i = (Integer) it.next();
+                    c.entier = (Integer) it.next();
                     f.exec(c);
                 }
             }
@@ -65,9 +65,9 @@ public class FUtiles {
             Collection result = new ArrayList(e.size());
             if (e != null && p != null) {
                 for (Iterator<Integer> iter = e.iterator(); iter.hasNext();) {
-                    c.i = iter.next();
-                    if (p.exec(c).b) {
-                        result.add(c.i);
+                    c.entier = iter.next();
+                    if (p.exec(c).booleen) {
+                        result.add(c.entier);
                     }
                 }
             }
@@ -80,12 +80,12 @@ public class FUtiles {
         public Contexte exec(Contexte c) {
             for (Iterator it = c.collection.iterator(); it.hasNext();) {
                 c.objet = it.next();
-                if (c.fonction.exec(c).b) {
-                    c.b = true;
+                if (c.fonction.exec(c).booleen) {
+                    c.booleen = true;
                     return c;
                 }
             }
-            c.b = false;
+            c.booleen = false;
             return c;
         }
     };

@@ -7,8 +7,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-public class Contexte extends Primitif implements ICodage //, Iterable<Integer>
-{
+public class Contexte extends FonctionBase implements ICodage {
+    public Integer entier;
+    public Boolean booleen;
+    //
     public ArrayList<GCoups> fCoups;
     ArrayList<GCoups> pseudoCoups, coupsARetirerCarEchec,
             pseudoCoupsPositionSimule, pseudoCoupsAttaqueRoques;
@@ -34,17 +36,19 @@ public class Contexte extends Primitif implements ICodage //, Iterable<Integer>
     public Fonction fonction;
     public Object objet;
     public Contexte(GPosition gposition) {
+//  ??      new Contexte(gposition, gposition.getTrait());
+
         this.gposition = gposition;
         couleur = gposition.getTrait();
+
         etats = gposition.getEtats();
         pseudoCoups = new ArrayList<>();
     }
     Contexte(GPosition gposition, int couleur) {
         this.gposition = gposition;
         this.couleur = couleur;
+
         etats = gposition.getEtats();
         pseudoCoups = new ArrayList<>();
     }
-  
-   
 }

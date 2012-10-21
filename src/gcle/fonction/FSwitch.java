@@ -15,7 +15,7 @@ public class FSwitch extends Fonction {
     @Override
     public Contexte exec(Contexte c) {
         for (int i = 0; i < iTp.length; i++) {
-            if (iTp[i].exec(c).b == true) {
+            if (iTp[i].exec(c).booleen == true) {
                 iTf[i].exec(c);
                 return c;
             }

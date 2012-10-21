@@ -15,7 +15,7 @@ public class IterateurClasse extends PFonction {
     static class ExistePieceSuivante extends Fonction {
         @Override
         public Contexte exec(Contexte c) {
-            c.b = c.iterateurPosition.hasNext();
+            c.booleen = c.iterateurPosition.hasNext();
             return c;
         }
     }
@@ -32,7 +32,7 @@ public class IterateurClasse extends PFonction {
     static class ExisteCoupsPromotionSuivant extends Fonction {
         @Override
         public Contexte exec(Contexte c) {
-            c.b = c.iterateurPromotion.hasNext();
+            c.booleen = c.iterateurPromotion.hasNext();
             return c;
         }
     }
@@ -70,7 +70,7 @@ public class IterateurClasse extends PFonction {
     static class ExisteCoupsPionSuivant extends Fonction {
         @Override
         public Contexte exec(Contexte c) {
-            c.b = c.iterateurSens.hasNext();
+            c.booleen = c.iterateurSens.hasNext();
             return c;
         }
     }
@@ -87,7 +87,7 @@ public class IterateurClasse extends PFonction {
     static class ExisteAileSuivante extends Fonction {
         @Override
         public Contexte exec(Contexte c) {
-            c.b = c.iterateurAile.hasNext();
+            c.booleen = c.iterateurAile.hasNext();
             return c;
         }
     }
@@ -111,7 +111,7 @@ public class IterateurClasse extends PFonction {
     static class ExisteAttaqueRoqueSuivante extends Fonction {
         @Override
         public Contexte exec(Contexte c) {
-            c.b = c.iterateurAttaqueRoque.hasNext();
+            c.booleen = c.iterateurAttaqueRoque.hasNext();
             return c;
         }
     }
@@ -142,7 +142,7 @@ public class IterateurClasse extends PFonction {
     static class ExisteCoupsARetirerSuivant extends Fonction {
         @Override
         public Contexte exec(Contexte c) {
-            c.b = c.iterateurfiltrechecs.hasNext();
+            c.booleen = c.iterateurfiltrechecs.hasNext();
             return c;
         }
     }
@@ -166,7 +166,7 @@ public class IterateurClasse extends PFonction {
     static class EstCaseDuRoi extends Fonction {
         @Override
         public Contexte exec(Contexte c) {
-            c.b = c.iterateurcoupspositionsimule.next().getCaseX() == c.caseRoi;
+            c.booleen = c.iterateurcoupspositionsimule.next().getCaseX() == c.caseRoi;
             return c;
         }
     }

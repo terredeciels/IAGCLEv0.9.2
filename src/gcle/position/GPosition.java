@@ -62,7 +62,6 @@ public class GPosition implements ICodage {
         } else {
             caseEP = CASES[cp_position.getCaseEP()];
         }
-        //étapes:
         Contexte c =new Contexte(this);     
 //        Fonction fCoupsLegaux = GFonction.fCoupsLegaux;
 //        Contexte resultContexte = fCoupsLegaux.exec(new Contexte(this));
