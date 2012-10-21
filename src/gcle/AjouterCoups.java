@@ -51,4 +51,11 @@ public class AjouterCoups extends Contexte {
             return c;
         }
     }
+      static class AjouterCoupsARetirer extends Fonction {
+        @Override
+        public Contexte exec(Contexte c) {
+            c.coupsARetirerCarEchec.add(c.coupsAControlerPourEchec);
+            return c;
+        }
+    }
 }

@@ -53,6 +53,7 @@ public class PFonction extends FonctionUtile implements ICodage {
     static class CaseSuivanteDirection extends Fonction {
         @Override
         public Contexte exec(Contexte c) {
+//     ??      c.caseX= c.iterateurCaseX.next();
             c.caseX = c.caseX + c.direction;
             return c;
         }
@@ -251,13 +252,7 @@ public class PFonction extends FonctionUtile implements ICodage {
             return c;
         }
     }
-    static class AjouterCoupsARetirer extends Fonction {
-        @Override
-        public Contexte exec(Contexte c) {
-            c.coupsARetirerCarEchec.add(c.coupsAControlerPourEchec);
-            return c;
-        }
-    }
+  
     static class CaseDuRoi extends Fonction {
         @Override
         public Contexte exec(Contexte c) {

@@ -1,5 +1,6 @@
 package gcle;
 
+import gcle.AjouterCoups.AjouterCoupsARetirer;
 import gcle.AjouterCoups.AjouterCoupsDeplacement;
 import gcle.AjouterCoups.AjouterCoupsNormal;
 import gcle.AjouterCoups.AjouterCoupsPrise;
@@ -27,7 +28,6 @@ import gcle.IterateurClasse.SuivanteAileRoque;
 import gcle.IterateurClasse.SuivanteCaseRoque;
 import gcle.IterateurClasse.SuivantePiece;
 import gcle.IterateurClasse.SuivantePiecePromotion;
-import gcle.PFonction.AjouterCoupsARetirer;
 import gcle.PFonction.CaseAJouer;
 import gcle.PFonction.CaseDuRoi;
 import gcle.PFonction.CaseSuivanteAvancePion;
