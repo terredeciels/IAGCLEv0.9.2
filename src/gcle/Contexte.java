@@ -12,8 +12,10 @@ public class Contexte extends FonctionBase implements ICodage {
     public Boolean booleen;
     //
     public ArrayList<GCoups> fCoups;
-    ArrayList<GCoups> pseudoCoups, coupsARetirerCarEchec,
-            pseudoCoupsPositionSimule, pseudoCoupsAttaqueRoques;
+    ArrayList<GCoups> pseudoCoups= new ArrayList<>(),
+            coupsARetirerCarEchec,
+            pseudoCoupsPositionSimule, 
+            pseudoCoupsAttaqueRoques;
     GPosition gposition, gpositionSimul;
     Integer couleur, couleurSimul;
     Integer aile, aileDame, aileRoi;
@@ -36,19 +38,15 @@ public class Contexte extends FonctionBase implements ICodage {
     public Fonction fonction;
     public Object objet;
     public Contexte(GPosition gposition) {
-//  ??      new Contexte(gposition, gposition.getTrait());
-
         this.gposition = gposition;
         couleur = gposition.getTrait();
-
         etats = gposition.getEtats();
-        pseudoCoups = new ArrayList<>();
+//        pseudoCoups = new ArrayList<>();
     }
     Contexte(GPosition gposition, int couleur) {
         this.gposition = gposition;
         this.couleur = couleur;
-
         etats = gposition.getEtats();
-        pseudoCoups = new ArrayList<>();
+//        pseudoCoups = new ArrayList<>();
     }
 }

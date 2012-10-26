@@ -51,8 +51,10 @@ public class FonctionUtile extends FonctionBase {
             .getInstance(fExisteCase, fAjouterCoups), fCaseSuivanteDiagonalePion);
     static final Fonction fRoques = fogoh(fTantQueConditionsRoque, fIterateurAileRoques, fInitRoques);
     static final Fonction fAttaqueRoque = fog(fTantQue, fIterateurAtaqueRoque);
+    
     public static final Fonction fCoupsLegaux = fog(fog(fRetirerCoupsMiseEnEchec, FSi
             .getInstance(fExisteCaseEP, fTraiterEnPassantSelonCouleur)), fog(fRoques, fCaseAJouer));
+    
     static final Fonction[] tTypeCoups = {fTypeDeplOuPrise, fTypeEnPassant, fTypePromotion};
     static final Fonction[] tTypeAction = {fDeplacerPiece, fog(
         fDeplacerPieceEnPassant, fDeplacerPiece), fog(
